@@ -1,0 +1,25 @@
+version: '2'
+services:
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:8080"
+    volumes:
+      - /usr/src/app/node_modules
+      - ./frontend:/usr/src/app
+    links:
+      - backend
+
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - /usr/src/app/node_modules
+      - ./backend:/usr/src/app
+    links:
+      - mongo
+
+  mongo:
+    image: mongo:latest

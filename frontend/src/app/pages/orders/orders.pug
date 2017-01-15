@@ -1,0 +1,36 @@
+section.content-header
+  h1
+    | Orders
+    small list of orders
+
+section.content
+  .box
+    .box-body.no-padding
+      table.table.table-striped.table-hover
+        thead
+          tr
+            th Name
+            th Location
+            th Phone Number
+            th Amount of Products
+            th Total To Pay
+        tbody
+          tr(ng-repeat="product in [0,1,2,3,4,5,6,7,8,9]")
+            td
+              b John Brown
+            td 150, 120
+            td 950 89 72
+            td 5
+            td 12000
+    .box-footer.clearfix
+      ul.pagination.pagination-sm.no-margin.pull-right
+        li
+          a «
+        li
+          a 1
+        li
+          a 2
+        li
+          a 3
+        li
+          a »

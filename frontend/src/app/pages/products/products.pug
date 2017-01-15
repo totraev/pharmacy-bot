@@ -1,0 +1,36 @@
+section.content-header
+  h1
+    | Products
+    small list of products 3
+
+section.content
+  .box
+    .box-body.no-padding
+      table.table.table-striped
+        thead
+          tr
+            th Product Name
+            th Price
+            th Quantity
+            th Producer
+            th Location
+        tbody
+          tr(ng-repeat="product in [0,1,2,3,4,5,6,7,8,9]")
+            td
+              b Dimedrol
+            td 1000
+            td 100
+            td Dori
+            td 100, 100
+    .box-footer.clearfix
+      ul.pagination.pagination-sm.no-margin.pull-right
+        li
+          a «
+        li
+          a 1
+        li
+          a 2
+        li
+          a 3
+        li
+          a »

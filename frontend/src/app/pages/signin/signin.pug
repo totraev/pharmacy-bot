@@ -1,0 +1,27 @@
+.login-logo
+  | Pharmacy
+  b BOT
+.login-box-body(style="padding-bottom: 0px")
+  h4.login-box-msg Sign in to start your session
+
+  form.form(name='form', ng-submit='vm.login(form)', novalidate='')
+    .box-body
+      .form-group
+        label Email
+        input.form-control(type='email', name='email', ng-model='vm.user.email')
+      .form-group
+        label Password
+        input.form-control(type='password', name='password', ng-model='vm.user.password')
+
+      .form-group.has-error
+        p.help-block(ng-show='form.email.$error.required && form.password.$error.required && vm.submitted')
+          | Please enter your email and password.
+        p.help-block {{ vm.errors.other }}
+    .box-footer.clearfix
+      div.pull-left
+        button.btn.btn-primary(type='submit')
+          | Login
+      div.pull-right
+        a(href='#') I forgot my password
+        br
+        a(href='#') Register
