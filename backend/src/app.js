@@ -1,21 +1,28 @@
 import express from 'express'
 import bodyParser from 'body-parser'
+import jwt from 'express-jwt'
 
 import map from './routes/map'
 import pharmacy from './routes/pharmacy'
 import products from './routes/products'
 import orders from './routes/orders'
+import auth from './routes/auth'
+
 import config from './config'
 
 const app = express()
 
+const { secret } = config.jwt
+const authenticate = jwt({secret})
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.use('/map', map)
-app.use('/pharmacy', pharmacy)
-app.use('/products', products)
-app.use('/orders', orders)
+app.use('/map', authenticate, map)
+app.use('/pharmacy', authenticate, pharmacy)
+app.use('/products', authenticate, products)
+app.use('/orders', authenticate, orders)
+app.use('/auth', auth)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

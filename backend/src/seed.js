@@ -10,7 +10,8 @@ for(let i = 0; i < 1000; i++) {
     price: Faker.commerce.price(),
     quantityWH: Faker.random.number(1000),
     producer: Faker.company.companyName(),
-    location: [Faker.address.latitude(), Faker.address.longitude()]
+    location: [Faker.address.latitude(), Faker.address.longitude()],
+    pharmacy: '587b8f69dc412302c6bbfd6f'
   })
 }
 
@@ -21,7 +22,8 @@ for(let i = 0; i < 1000; i++) {
     name: Faker.internet.userName(),
     location: [Faker.address.latitude(), Faker.address.longitude()],
     phone: Faker.phone.phoneNumber(),
-    products: []
+    products: [],
+    pharmacy: '587b8f69dc412302c6bbfd6f'
   })
 }
 

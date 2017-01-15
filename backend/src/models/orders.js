@@ -25,7 +25,13 @@ const OrderSchema = new Schema({
     type: String,
     required: true
   },
-  products: [OrderItemSchema]
+  products: [OrderItemSchema],
+  pharmacy: {
+    type: ObjectId,
+    ref: 'Pharmacy',
+    required: true,
+    index: true
+  }
 })
 
 export default db.model('Order', OrderSchema)

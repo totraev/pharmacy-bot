@@ -1,6 +1,14 @@
 version: '2'
 services:
 
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    links:
+      - frontend
+      - backend
+
   frontend:
     build: ./frontend
     ports:
@@ -8,8 +16,6 @@ services:
     volumes:
       - /usr/src/app/node_modules
       - ./frontend:/usr/src/app
-    links:
-      - backend
 
   backend:
     build: ./backend

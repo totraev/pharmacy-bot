@@ -26,7 +26,9 @@ const ProductSchema = new mongoose.Schema({
   },
   pharmacy: {
     type: ObjectId,
-    ref: 'Pharmacy'
+    ref: 'Pharmacy',
+    required: true,
+    index: true
   }
 })
 

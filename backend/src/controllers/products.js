@@ -3,7 +3,9 @@ import CSVService from '../services/CSVService'
 
 export default {
 	index(req, res) {
-		Product.find({}, (err, products) => {
+		const { id: pharmacy } = req.user
+
+		Product.find({pharmacy}, (err, products) => {
 			if(err) {
 				res.status(500).send()
 			} else {
@@ -13,9 +15,10 @@ export default {
 	},
 
 	view(req, res) {
-		const { id } = req.params
+		const { id: pharmacy } = req.user
+		const { id: _id } = req.params
 
-		Product.findById(id, (err, product) => {
+		Product.findOne({_id, pharmacy}, (err, product) => {
 			if(err) {
 				res.status(500).send()
 			} else {
@@ -25,11 +28,12 @@ export default {
 	},
 
 	create(req, res) {
-		const { body } = req
-		const location = JSON.parse(body.location)
+		const { body, user: { id: pharmacy } } = req
+
 		const product = {
 			...body,
-			location
+			pharmacy,
+			location: JSON.parse(body.location)
 		}
 
 		Product.create(product, (err, product) => {
@@ -42,22 +46,23 @@ export default {
 	},
 
 	delete(req, res) {
-		const { id } = req.params
+		const { id: _id } = req.params
+		const { id: pharmacy } = req.user
 
-		Product.findByIdAndRemove(id, (err) => {
+		Product.findOneAndRemove({_id, pharmacy}, (err, result) => {
 			if(err){
 				res.status(500).send()
 			} else {
-				res.status(204).send()
+				res.status(200).send(result)
 			}
 		})
 	},
 
 	update(req, res) {
-		const { id } = req.params
-		const { body } = req
+		const { id: _id } = req.params
+		const { body, user: { id: pharmacy } } = req
 
-		Product.findByIdAndUpdate(id, { $set: body}, { new: true }, function (err, product) {
+		Product.findOneAndUpdate({_id, pharmacy}, { $set: body}, { new: true }, function (err, product) {
 			if(err){
 				res.status(500).send()
 			} else {
@@ -66,6 +71,7 @@ export default {
 		})
 	},
 
+	// TODO: add pharmacy id, refactor service
 	upload(req, res) {
 		const parser = new CSVService(req.file.path)
 

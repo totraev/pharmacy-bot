@@ -2,7 +2,9 @@ import Order from '../models/orders'
 
 export default {
 	index(req, res) {
-		Order.find({}, (err, orders) => {
+		const {id: pharmacy} = req.user
+
+		Order.find({pharmacy}, (err, orders) => {
 			if(err) {
 				res.status(500).send()
 			} else {
@@ -12,9 +14,10 @@ export default {
 	},
 
 	view(req, res) {
-		const { id } = req.params
+		const { id: _id } = req.params
+		const { id: pharmacy } = req.user
 
-		Order.findById(id, (err, order) => {
+		Order.findOne({_id, pharmacy}, (err, order) => {
 			if(err) {
 				res.status(500).send()
 			} else {

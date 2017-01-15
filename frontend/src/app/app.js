@@ -12,6 +12,7 @@ import '../../node_modules/ui-leaflet/dist/ui-leaflet'
 import '../../node_modules/angular-simple-logger/dist'
 
 import uirouter from 'angular-ui-router'
+import angularJWT from 'angular-jwt'
 import router from './router'
 import aside from './components/aside'
 import navbar from './components/navbar'
@@ -38,6 +39,7 @@ export default angular.module(MODULE_NAME, [
   signin,
   signup,
   'nemLogging',
-  'ui-leaflet'
+  'ui-leaflet',
+  angularJWT
 ])
   .config(router)

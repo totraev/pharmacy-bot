@@ -3,6 +3,7 @@ import pharmacy from '../controllers/pharmacy'
 
 const router = express.Router()
 
-router.get('/', pharmacy.index)
+router
+  .get('/', pharmacy.index)
 
 export default router

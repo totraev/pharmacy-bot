@@ -3,6 +3,7 @@ import map from '../controllers/map'
 
 const router = express.Router()
 
-router.get('/', map.index)
+router
+  .get('/', map.index)
 
 export default router
