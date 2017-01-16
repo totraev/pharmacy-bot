@@ -43,3 +43,4 @@ export default angular.module(MODULE_NAME, [
   angularJWT
 ])
   .config(router)
+  .run((authManager) => authManager.redirectWhenUnauthenticated())

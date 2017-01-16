@@ -1,6 +1,8 @@
 export default class SigninCtrl {
-  constructor($http) {
+  constructor($http, $state) {
+    this.$state = $state
     this.$http = $http
+
     this.form = {
       email: '',
       password: ''
@@ -13,6 +15,7 @@ export default class SigninCtrl {
     this.$http.post('/api/auth/sign_in', this.form).then((res) => {
       if(res.status == 200){
         localStorage.setItem('jwt', res.data)
+        this.$state.go('admin.pharmacy')
       }
     })
   }

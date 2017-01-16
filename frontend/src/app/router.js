@@ -6,15 +6,25 @@ routing.$inject = ['$urlRouterProvider', '$locationProvider', '$stateProvider', 
 export default function routing($urlRouterProvider, $locationProvider, $stateProvider, $httpProvider, jwtOptionsProvider) {
   $locationProvider.html5Mode(true)
   $urlRouterProvider.otherwise('/')
+
   jwtOptionsProvider.config({
-    whiteListedDomains: ['backend']
+    tokenGetter: () => {
+      return localStorage.getItem('jwt')
+    },
+    unauthenticatedRedirector: ($state) => {
+      $state.go('auth.signin');
+    }
   })
+
   $httpProvider.interceptors.push('jwtInterceptor')
 
   $stateProvider
     .state('admin', {
       abstract: true,
-      template: admin
+      template: admin,
+      data: {
+        requiresLogin: true
+      }
     })
     .state('auth', {
       abstract: true,
