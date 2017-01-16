@@ -7,7 +7,7 @@
   .form-group.has-error
     .help-block(ng-show="signin.errorMsg" align="center") {{signin.errorMsg}}
 
-  form.form(name='form', ng-submit='signin.onSubmit(form)', novalidate)
+  form.form(name='form' ng-submit='signin.onSubmit(form)' novalidate)
     .box-body
       .form-group(ng-class="{'has-error': form.email.$invalid && form.$submitted}")
         label Email
