@@ -4,24 +4,25 @@
 .login-box-body(style="padding-bottom: 0px")
   h4.login-box-msg Sign in to start your session
 
-  form.form(name='form', ng-submit='vm.login(form)', novalidate='')
+  form.form(name='form', ng-submit='signin.onSubmit(form)', novalidate)
     .box-body
-      .form-group
+      .form-group(ng-class="{'has-error': form.email.$invalid && form.$submitted}")
         label Email
-        input.form-control(type='email', name='email', ng-model='vm.user.email')
-      .form-group
-        label Password
-        input.form-control(type='password', name='password', ng-model='vm.user.password')
+        input.form-control(type='email' name='email' ng-model='signin.form.email' required)
+        ng-messages(for='form.email.$error' ng-show='form.email.$invalid && form.$submitted')
+          ng-message.help-block(when='required' ng-hide="form.email.$error.email") Email is required
+          ng-message.help-block(when='email' ng-hide="form.email.$error.required") Email is not valid
 
-      .form-group.has-error
-        p.help-block(ng-show='form.email.$error.required && form.password.$error.required && vm.submitted')
-          | Please enter your email and password.
-        p.help-block {{ vm.errors.other }}
+      .form-group(ng-class="{'has-error': form.password.$invalid && form.$submitted}")
+        label Password
+        input.form-control(type='password' name='password' ng-model='signin.form.password' required ng-minlength="6")
+        ng-messages(for='form.password.$error' ng-show='form.password.$invalid && form.$submitted')
+          ng-message.help-block(when='required' ng-hide="form.password.$error.minlength") Password is required
+          ng-message.help-block(when='minlength' ng-hide="form.password.$error.required") Min length equal 6
+
     .box-footer.clearfix
       div.pull-left
         button.btn.btn-primary(type='submit')
           | Login
       div.pull-right
-        a(href='#') I forgot my password
-        br
-        a(href='#') Register
+        a(ui-sref='auth.signup') Register

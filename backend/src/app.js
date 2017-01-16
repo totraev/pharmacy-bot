@@ -31,6 +31,14 @@ app.use((req, res, next) => {
   next(err)
 })
 
+app.use(function (err, req, res, next) {
+  if (err.name === 'UnauthorizedError') {
+    res.status(401).send('Unauthorized');
+  } else {
+    next(err)
+  }
+})
+
 // error handler
 app.use((err, req, res) => {
   // set locals, only providing error in development

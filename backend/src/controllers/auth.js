@@ -3,9 +3,8 @@ import Pharmacy from '../models/pharmacy'
 export default {
 	create(req, res) {
 		const { email, password, location } = req.body
-    const latLng = JSON.parse(location)
 
-		Pharmacy.create({email, password, location: latLng}, (err, pharmacy) => {
+		Pharmacy.create({email, password, location}, (err, pharmacy) => {
 			if(err){
 				res.status(500).send(err.message)
 			} else {
