@@ -10,7 +10,7 @@ export default angular.module('page.pharmacy', [])
       url: '/pharmacy',
       template: tpl,
       controller: 'PharmacyCtrl',
-      controllerAs: 'pharmacy'
+      controllerAs: 'vm'
     });
   })
   .name

@@ -3,6 +3,9 @@
   b BOT
 .login-box-body
   h4.login-box-msg Sign up to start your session
+  
+  .form-group.has-error
+    .help-block(ng-show="signup.errorMsg" align="center") {{signup.errorMsg}}
 
   form.form(name='form', ng-submit='signup.onSubmit(form)', novalidate)
     .box-body

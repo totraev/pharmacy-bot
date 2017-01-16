@@ -15,22 +15,15 @@ section.content
             th Amount of Products
             th Total To Pay
         tbody
-          tr(ng-repeat="product in [0,1,2,3,4,5,6,7,8,9]")
+          tr(ng-repeat="order in vm.pager.orders" ng-click="vm.goTo(order._id)")
             td
-              b John Brown
-            td 150, 120
-            td 950 89 72
-            td 5
-            td 12000
+              b {{order.name}}
+            td
+              a(href="#")
+                i.fa.fa-map-marker(style="margin-right: 5px")
+                | Show on map
+            td {{order.phone}}
+            td {{order.products.length}}
+            td 120$
     .box-footer.clearfix
-      ul.pagination.pagination-sm.no-margin.pull-right
-        li
-          a «
-        li
-          a 1
-        li
-          a 2
-        li
-          a 3
-        li
-          a »
+      ul.no-margin.pagination-sm.pull-right(uib-pagination ng-model="vm.pager.currentPage" boundary-link-numbers="true" total-items="vm.pager.totalItems" ng-change="vm.pageChanged()" max-size="vm.pager.maxSize")

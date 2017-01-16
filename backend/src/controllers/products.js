@@ -32,13 +32,12 @@ export default {
 
 		const product = {
 			...body,
-			pharmacy,
-			location: JSON.parse(body.location)
+			pharmacy
 		}
 
 		Product.create(product, (err, product) => {
 			if(err){
-				res.status(500).send()
+				res.status(500).send(err.message)
 			} else {
 				res.status(200).json(product)
 			}

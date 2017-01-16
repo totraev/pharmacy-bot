@@ -1,0 +1,28 @@
+section.content-header
+  h1
+    | Order
+    small {{vm.order.name}}
+
+section.content(style="height: 511px")
+  .row
+    .col-xs-4
+
+      .box.box-default
+        .box-header.with-border
+          h3.box-title {{vm.order.name}}
+        .box-body.no-padding
+          ul.nav.nav-pills.nav-stacked
+            li
+              a
+                b phone:
+                span.pull-right {{vm.order.phone}}
+            li
+              a
+                b quantity:
+                span.pull-right {{vm.order.products.length}}
+            li
+              a
+                b total:
+                span.pull-right 1230$
+    .col-xs-8
+      leaflet(defaults="vm.defaults" lf-center="vm.center" height="480px")              

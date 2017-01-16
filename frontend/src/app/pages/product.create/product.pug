@@ -1,0 +1,37 @@
+section.content-header
+  h1
+    | Product
+    small {{vm.product.name}}
+
+section.content(style="height: 511px")
+  .alert-danger(uib-alert ng-show="vm.errMsg") {{vm.errMsg}}
+  .row
+    .col-xs-6
+      .box.box-primary
+        .box-header.with-border
+          h3.box-title Create product
+
+        form(name="form" ng-submit="vm.onSubmit(form)"  novalidate)
+          .box-body
+            .form-group(ng-class="{'has-error': form.name.$invalid && form.$submitted}")
+              label(for="name") Name
+              input.form-control(type="text" name="name" id="name" ng-model="vm.product.name" required)
+              ng-messages(for='form.name.$error' ng-show='form.name.$invalid && form.$submitted')
+                ng-message.help-block(when='required') Name is required
+            .form-group(ng-class="{'has-error': form.price.$invalid && form.$submitted}")
+              label(for="price") Price
+              input.form-control(type="text" name="price" id="price" ng-model="vm.product.price" required)
+              ng-messages(for='form.price.$error' ng-show='form.price.$invalid && form.$submitted')
+                ng-message.help-block(when='required') Price is required
+            .form-group(ng-class="{'has-error': form.quantity.$invalid && form.$submitted}")
+              label(for="quantity") Quantity
+              input.form-control(type="text" name="quantity" id="quantity" ng-model="vm.product.quantityWH" required)
+              ng-messages(for='form.quantity.$error' ng-show='form.quantity.$invalid && form.$submitted')
+                ng-message.help-block(when='required') Quantity is required
+            .form-group(ng-class="{'has-error': form.producer.$invalid && form.$submitted}")
+              label(for="producer") Producer
+              input.form-control(type="text" name="producer" id="producer" ng-model="vm.product.producer" required)
+              ng-messages(for='form.producer.$error' ng-show='form.producer.$invalid && form.$submitted')
+                ng-message.help-block(when='required') Producer is required
+          .box-footer
+            button.btn.btn-primary(type="submit") Submit

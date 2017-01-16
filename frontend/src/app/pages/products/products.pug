@@ -1,7 +1,7 @@
 section.content-header
   h1
     | Products
-    small list of products 3
+    small list of products
 
 section.content
   .box
@@ -15,22 +15,15 @@ section.content
             th Producer
             th Location
         tbody
-          tr(ng-repeat="product in [0,1,2,3,4,5,6,7,8,9]")
+          tr(ng-repeat="product in vm.pager.products" ng-click="vm.goTo(product._id)")
             td
-              b Dimedrol
-            td 1000
-            td 100
-            td Dori
-            td 100, 100
+              b {{ product.name }}
+            td {{ product.price }}
+            td {{ product.quantityWH }}
+            td {{ product.producer }}
+            td
+              a(href="#")
+                i.fa.fa-map-marker(style="margin-right: 5px")
+                | Show on map
     .box-footer.clearfix
-      ul.pagination.pagination-sm.no-margin.pull-right
-        li
-          a «
-        li
-          a 1
-        li
-          a 2
-        li
-          a 3
-        li
-          a »
+      ul.no-margin.pagination-sm.pull-right(uib-pagination ng-model="vm.pager.currentPage" boundary-link-numbers="true" total-items="vm.pager.totalItems" ng-change="vm.pageChanged()" max-size="vm.pager.maxSize")

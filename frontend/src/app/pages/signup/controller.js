@@ -7,6 +7,7 @@ export default class SignupCtrl {
       password: '',
       password_confirm: ''
     }
+    this.errorMsg = ''
   }
 
   onSubmit(form) {
@@ -20,9 +21,9 @@ export default class SignupCtrl {
         location: [latitude, longitude]
       }
 
-      this.$http.post('/api/auth/sign_up', data).then(() => {
-        this.$location.path('/signin')
-      })
+      this.$http.post('/api/auth/sign_up', data)
+        .then(() => this.$location.path('/signin'))
+        .catch((res) => this.errorMsg = res.data)
     })
   }
 }

@@ -10,7 +10,7 @@ export default angular.module('page.orders', [])
       url: '/orders',
       template: tpl,
       controller: 'OrdersCtrl',
-      controllerAs: 'orders'
+      controllerAs: 'vm'
     });
   })
   .name

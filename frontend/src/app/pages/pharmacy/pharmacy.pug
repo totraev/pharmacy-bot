@@ -1,5 +1,33 @@
 section.content-header
-  div Hello, Dashboard!
+  h1
+    | Pharmacy
+    small info
 
 section.content
-  | Test!
+  .row
+    .col-xs-4
+
+      .box.box-widget.widget-user-2
+        .widget-user-header.bg-blue
+          .widget-user-image
+            img(width="200" src="/img/logo.png")
+          h3.widget-user-username DORI
+          h5.widget-user-desc OOO "Dori med"
+
+        .box-footer.no-padding
+          ul.nav.nav-stacked
+            li
+              a
+                b Phone:
+                span.pull-right +9989-7-999-99-99
+            li
+              a
+                b Address:
+                span.pull-right Uzbekistan, Tashkent
+            li
+              a
+                b Work time:
+                span.pull-right 9.00 - 22.00
+
+    .col-xs-8
+      leaflet(defaults="vm.defaults" lf-center="vm.center" height="480px")

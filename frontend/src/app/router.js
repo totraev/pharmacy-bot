@@ -5,7 +5,7 @@ routing.$inject = ['$urlRouterProvider', '$locationProvider', '$stateProvider', 
 
 export default function routing($urlRouterProvider, $locationProvider, $stateProvider, $httpProvider, jwtOptionsProvider) {
   $locationProvider.html5Mode(true)
-  $urlRouterProvider.otherwise('/')
+  $urlRouterProvider.otherwise('/pharmacy')
 
   jwtOptionsProvider.config({
     tokenGetter: () => {

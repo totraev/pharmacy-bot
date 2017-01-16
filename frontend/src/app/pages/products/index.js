@@ -10,7 +10,7 @@ export default angular.module('page.products', [])
       url: '/products',
       template: tpl,
       controller: 'ProductsCtrl',
-      controllerAs: 'products'
+      controllerAs: 'vm'
     });
   })
   .name

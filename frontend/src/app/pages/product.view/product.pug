@@ -1,0 +1,32 @@
+section.content-header
+  h1
+    | Product
+    small {{vm.product.name}}
+
+section.content(style="height: 511px")
+  .row
+    .col-xs-4
+      .box.box-widget.widget-user-2
+        .widget-user-header.bg-aqua
+          .widget-user-image
+            img(width="200" src="/img/logo.png")
+          h3.widget-user-username {{vm.product.name}}
+          h5.widget-user-desc OOO "Dori med"
+
+      .box.box-default
+        .box-header.with-border
+          h3.box-title INFO
+        .box-body.no-padding
+          ul.nav.nav-pills.nav-stacked
+            li
+              a
+                b price:
+                span.pull-right {{vm.product.price}}$
+            li
+              a
+                b quantity:
+                span.pull-right {{vm.product.quantityWH}}
+            li
+              a
+                b producer:
+                span.pull-right {{vm.product.producer}}

@@ -13,6 +13,8 @@ import '../../node_modules/angular-simple-logger/dist'
 
 import uirouter from 'angular-ui-router'
 import angularJWT from 'angular-jwt'
+import bootstrap from 'angular-ui-bootstrap'
+
 import router from './router'
 import aside from './components/aside'
 import navbar from './components/navbar'
@@ -20,8 +22,11 @@ import footer from './components/footer'
 
 import pharmacy from './pages/pharmacy'
 import products from './pages/products'
+import productView from './pages/product.view'
+import productCreate from './pages/product.create'
 import map from './pages/map'
 import orders from './pages/orders'
+import order from './pages/order.view'
 import signin from './pages/signin'
 import signup from './pages/signup'
 
@@ -34,13 +39,17 @@ export default angular.module(MODULE_NAME, [
   footer,
   pharmacy,
   products,
+  productView,
+  productCreate,
   map,
   orders,
+  order,
   signin,
   signup,
   'nemLogging',
   'ui-leaflet',
-  angularJWT
+  angularJWT,
+  bootstrap
 ])
   .config(router)
   .run((authManager) => authManager.redirectWhenUnauthenticated())
